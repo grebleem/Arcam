@@ -1,0 +1,383 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		28A8F432278F41060039A1AD /* WebSocketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A8F431278F41060039A1AD /* WebSocketController.swift */; };
+		28ED7E18278EE85A00700E9C /* ArcamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED7E17278EE85A00700E9C /* ArcamApp.swift */; };
+		28ED7E1A278EE85A00700E9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED7E19278EE85A00700E9C /* ContentView.swift */; };
+		28ED7E1C278EE85A00700E9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28ED7E1B278EE85A00700E9C /* Assets.xcassets */; };
+		28ED7E1F278EE85A00700E9C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28ED7E1E278EE85A00700E9C /* Preview Assets.xcassets */; };
+		28ED7E29278EE89600700E9C /* Arcam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED7E28278EE89600700E9C /* Arcam.swift */; };
+		28ED7E2B278EFFDF00700E9C /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED7E2A278EFFDF00700E9C /* SettingView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		28A8F431278F41060039A1AD /* WebSocketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketController.swift; sourceTree = "<group>"; };
+		28A8F433278F4DFB0039A1AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		28ED7E14278EE85A00700E9C /* Arcam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arcam.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		28ED7E17278EE85A00700E9C /* ArcamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcamApp.swift; sourceTree = "<group>"; };
+		28ED7E19278EE85A00700E9C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		28ED7E1B278EE85A00700E9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		28ED7E1E278EE85A00700E9C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		28ED7E20278EE85A00700E9C /* Arcam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Arcam.entitlements; sourceTree = "<group>"; };
+		28ED7E28278EE89600700E9C /* Arcam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arcam.swift; sourceTree = "<group>"; };
+		28ED7E2A278EFFDF00700E9C /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		28ED7E11278EE85A00700E9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		28A8F430278F40F30039A1AD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				28A8F431278F41060039A1AD /* WebSocketController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		28ED7E0B278EE85A00700E9C = {
+			isa = PBXGroup;
+			children = (
+				28ED7E16278EE85A00700E9C /* Arcam */,
+				28ED7E15278EE85A00700E9C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		28ED7E15278EE85A00700E9C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28ED7E14278EE85A00700E9C /* Arcam.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		28ED7E16278EE85A00700E9C /* Arcam */ = {
+			isa = PBXGroup;
+			children = (
+				28A8F433278F4DFB0039A1AD /* Info.plist */,
+				28A8F430278F40F30039A1AD /* Controller */,
+				28ED7E27278EE88200700E9C /* Models */,
+				28ED7E26278EE87A00700E9C /* App */,
+				28ED7E19278EE85A00700E9C /* ContentView.swift */,
+				28ED7E2A278EFFDF00700E9C /* SettingView.swift */,
+				28ED7E1B278EE85A00700E9C /* Assets.xcassets */,
+				28ED7E20278EE85A00700E9C /* Arcam.entitlements */,
+				28ED7E1D278EE85A00700E9C /* Preview Content */,
+			);
+			path = Arcam;
+			sourceTree = "<group>";
+		};
+		28ED7E1D278EE85A00700E9C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				28ED7E1E278EE85A00700E9C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		28ED7E26278EE87A00700E9C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				28ED7E17278EE85A00700E9C /* ArcamApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		28ED7E27278EE88200700E9C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				28ED7E28278EE89600700E9C /* Arcam.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		28ED7E13278EE85A00700E9C /* Arcam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28ED7E23278EE85A00700E9C /* Build configuration list for PBXNativeTarget "Arcam" */;
+			buildPhases = (
+				28ED7E10278EE85A00700E9C /* Sources */,
+				28ED7E11278EE85A00700E9C /* Frameworks */,
+				28ED7E12278EE85A00700E9C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Arcam;
+			productName = Arcam;
+			productReference = 28ED7E14278EE85A00700E9C /* Arcam.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		28ED7E0C278EE85A00700E9C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					28ED7E13278EE85A00700E9C = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 28ED7E0F278EE85A00700E9C /* Build configuration list for PBXProject "Arcam" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 28ED7E0B278EE85A00700E9C;
+			productRefGroup = 28ED7E15278EE85A00700E9C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28ED7E13278EE85A00700E9C /* Arcam */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		28ED7E12278EE85A00700E9C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28ED7E1F278EE85A00700E9C /* Preview Assets.xcassets in Resources */,
+				28ED7E1C278EE85A00700E9C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		28ED7E10278EE85A00700E9C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28A8F432278F41060039A1AD /* WebSocketController.swift in Sources */,
+				28ED7E29278EE89600700E9C /* Arcam.swift in Sources */,
+				28ED7E1A278EE85A00700E9C /* ContentView.swift in Sources */,
+				28ED7E2B278EFFDF00700E9C /* SettingView.swift in Sources */,
+				28ED7E18278EE85A00700E9C /* ArcamApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		28ED7E21278EE85A00700E9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		28ED7E22278EE85A00700E9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		28ED7E24278EE85A00700E9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Arcam/Arcam.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Arcam/Preview Content\"";
+				DEVELOPMENT_TEAM = 57KVLPT6VS;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Arcam/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flourmountain.Arcam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		28ED7E25278EE85A00700E9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Arcam/Arcam.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Arcam/Preview Content\"";
+				DEVELOPMENT_TEAM = 57KVLPT6VS;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Arcam/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flourmountain.Arcam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		28ED7E0F278EE85A00700E9C /* Build configuration list for PBXProject "Arcam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28ED7E21278EE85A00700E9C /* Debug */,
+				28ED7E22278EE85A00700E9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28ED7E23278EE85A00700E9C /* Build configuration list for PBXNativeTarget "Arcam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28ED7E24278EE85A00700E9C /* Debug */,
+				28ED7E25278EE85A00700E9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 28ED7E0C278EE85A00700E9C /* Project object */;
+}
