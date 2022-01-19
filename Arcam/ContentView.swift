@@ -10,9 +10,10 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var model: WebSocketController
+    @State var inputHex: String = ""
+    @State var outputString: String = ""
     
     @AppStorage("ipAddress")
-    
     
     private var ipAddress = "192.168.1.74"
     
@@ -22,9 +23,9 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Button {
-                model.heartBeat()
+                model.sendCommand(.power)
             } label: {
-                Text("Power")
+                Text("Get State")
             }
             
             VStack{
@@ -34,22 +35,45 @@ struct ContentView: View {
                     } label: {
                         Text("1")
                     }
-
                 }
             }
+            VStack {
+                HStack {
+                    TextField("Convert HEX", text: $inputHex)
+                    Button("Convert") {
+                        //
+                        doConvertHex()
+                        
+                    }
+                }
+                TextEditor(text: $outputString)
+                    .lineLimit(1)
+                    .padding()
+                    .frame( height: 70)
+                    .cornerRadius(25)
+                    
+                    
+            }
+            .padding()
         }
-        .frame(minWidth: 700, minHeight: 300)
+        .frame(minWidth: 800, minHeight: 400)
         .onAppear {
             model.connect()
         }
         .onDisappear {
-            model.disconnect()
+            model.stop()
         }
+    }
+    
+    
+    func doConvertHex() {
+        print(inputHex)
+        outputString = "[ " + inputHex.replacingOccurrences(of: " ", with: ", ").replacingOccurrences(of: "\n", with: ", ") + " ]"
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static let myEnvObject = WebSocketController()
+    static let myEnvObject = WebSocketController(hostname: "192.168.1.80", port: 50000)
     static var previews: some View {
         ContentView()
             .environmentObject(myEnvObject)

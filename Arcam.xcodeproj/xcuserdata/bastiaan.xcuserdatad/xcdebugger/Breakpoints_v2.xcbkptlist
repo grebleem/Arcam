@@ -14,9 +14,25 @@
             filePath = "Arcam/Controller/WebSocketController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "onMessage(message:)"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "decodeData(data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1B04E4BF-6726-4BD7-9041-6DC01BCFF0E3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Arcam/Controller/WebSocketController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "decodeData(data:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

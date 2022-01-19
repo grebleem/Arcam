@@ -9,12 +9,14 @@ import SwiftUI
 
 @main
 struct ArcamApp: App {
-    @StateObject var model = WebSocketController()
+    @StateObject var model = WebSocketController(hostname: "192.168.1.80", port: 50000)
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(model)
+        }.commands {
+            MenuCommands()
         }
         
         #if os(macOS)
@@ -22,6 +24,7 @@ struct ArcamApp: App {
             SettingView()
         }
         #endif
+
     }
     
     

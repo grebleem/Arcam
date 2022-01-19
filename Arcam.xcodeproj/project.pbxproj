@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		284A4FA2279083A8002D4BA0 /* ConvertHexCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284A4FA1279083A8002D4BA0 /* ConvertHexCodeView.swift */; };
+		284BF0E1279081BA0080B6B9 /* MenuCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284BF0E0279081BA0080B6B9 /* MenuCommands.swift */; };
 		28A8F432278F41060039A1AD /* WebSocketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A8F431278F41060039A1AD /* WebSocketController.swift */; };
 		28ED7E18278EE85A00700E9C /* ArcamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED7E17278EE85A00700E9C /* ArcamApp.swift */; };
 		28ED7E1A278EE85A00700E9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED7E19278EE85A00700E9C /* ContentView.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		284A4FA1279083A8002D4BA0 /* ConvertHexCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertHexCodeView.swift; sourceTree = "<group>"; };
+		284BF0E0279081BA0080B6B9 /* MenuCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCommands.swift; sourceTree = "<group>"; };
 		28A8F431278F41060039A1AD /* WebSocketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketController.swift; sourceTree = "<group>"; };
 		28A8F433278F4DFB0039A1AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		28ED7E14278EE85A00700E9C /* Arcam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arcam.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +44,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		284A4FA0279082E9002D4BA0 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				284BF0E0279081BA0080B6B9 /* MenuCommands.swift */,
+				284A4FA1279083A8002D4BA0 /* ConvertHexCodeView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		28A8F430278F40F30039A1AD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +85,7 @@
 				28ED7E27278EE88200700E9C /* Models */,
 				28ED7E26278EE87A00700E9C /* App */,
 				28ED7E19278EE85A00700E9C /* ContentView.swift */,
+				284A4FA0279082E9002D4BA0 /* Menu */,
 				28ED7E2A278EFFDF00700E9C /* SettingView.swift */,
 				28ED7E1B278EE85A00700E9C /* Assets.xcassets */,
 				28ED7E20278EE85A00700E9C /* Arcam.entitlements */,
@@ -176,6 +190,8 @@
 			files = (
 				28A8F432278F41060039A1AD /* WebSocketController.swift in Sources */,
 				28ED7E29278EE89600700E9C /* Arcam.swift in Sources */,
+				284A4FA2279083A8002D4BA0 /* ConvertHexCodeView.swift in Sources */,
+				284BF0E1279081BA0080B6B9 /* MenuCommands.swift in Sources */,
 				28ED7E1A278EE85A00700E9C /* ContentView.swift in Sources */,
 				28ED7E2B278EFFDF00700E9C /* SettingView.swift in Sources */,
 				28ED7E18278EE85A00700E9C /* ArcamApp.swift in Sources */,

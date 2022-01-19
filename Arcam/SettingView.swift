@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingView: View {
     
     @AppStorage("ipAddress")
-    private var ipAddress = "192.168.1.188"
+    private var ipAddress = "192.168.1.80"
     
     var body: some View {
         VStack {
@@ -21,7 +21,7 @@ struct SettingView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
         }
         .frame(width: 300)
-        .navigationTitle("Landmark Settings")
+        .navigationTitle("Arcam Settings")
         .padding(80)
     }
 }
