@@ -91,6 +91,7 @@ final class WebSocketController: ObservableObject {
         guard data[0] == 0x21 else { return }
         guard data.last == 0x0D else { return }
         let zoneNumber: UInt8 = data[1]
+        //
 //        switch zoneNumber {
 //        case 0x01: print("ZN: 1")
 //        case 0x02: print("ZN: 2")
