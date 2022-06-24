@@ -22,18 +22,57 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            HStack{
+                RoomEqView()
+                Button {
+                    model.codeRC5(.powerOn)
+                } label: {
+                    Text("ON")
+                }
+                Button {
+                    model.codeRC5(.PowerOff)
+                } label: {
+                    Text("OFF")
+                }
+            }
+            .padding()
+            
+            HStack {
+                if let volume = model.volume {
+                    Text("\(volume) dB")
+                        .bold()
+                        .font(.title)
+                }
+            }
+            Button {
+                model.sendCommand(.softwareVersion)
+            } label: {
+                Text("Version")
+            }
+            Button {
+                model.sendCommand(.nowPlayingInformation)
+            } label: {
+                Text("Info")
+            }
             Button {
                 model.sendCommand(.power)
             } label: {
                 Text("Get State")
             }
             
-            VStack{
+            HStack{
                 HStack {
                     Button {
-                        model.codeRC5(.one)
+                        model.codeRC5(.volumeDown)
                     } label: {
-                        Text("1")
+                        Text("-")
+                    }
+                }
+                HStack {
+                    Button {
+                        model.codeRC5(.volumeUp)
+                    } label: {
+                        Text("+")
                     }
                 }
             }
@@ -61,7 +100,7 @@ struct ContentView: View {
             model.connect()
         }
         .onDisappear {
-            model.stop()
+            //model.stop()
         }
     }
     

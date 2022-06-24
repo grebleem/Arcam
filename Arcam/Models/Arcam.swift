@@ -50,7 +50,7 @@ struct ArcamCodes {
         case setRequestVolume = 0x0D
         case requestMuteStatus = 0x0E
         case directModeStatus = 0x0F
-        case requestDecodeModeStatas2ch = 0x10
+        case requestDecodeModeStatus2ch = 0x10
         case requestDecodeModeStatasMCH = 0x11
         case requestRDSinformation = 0x12
         case requestVideoOutputResolution = 0x13
@@ -61,14 +61,29 @@ struct ArcamCodes {
         case progTypeCategory = 0x19
         case dlsPDTinfo = 0x1A
         case imaxEnhanched = 0x0C
-        
+        case trebleEqualisation = 0x35
+        case bassEqualisation = 0x36
+        case roomEqualisation = 0x37
+        case dolbyAudio = 0x38
+        case balance = 0x3B
+        case subwooferTrim = 0x3F
+        case lipsyncDelay = 0x40
+        case compression = 0x41
         case requestIncomingVideoParameters = 0x42
+        case requestIncomingAudioFormat = 0x43
+        case requestIncomingAudioSampleRate = 0x44
+        case requestSubStereoTrim = 0x45
+        case roomEQnames = 0x34
         // TO DO
+        
+        case nowPlayingInformation = 0x64
         case heartbeat = 0x25
     }
     
     enum rc5 {
         case standby, eject, one, two, three, four, five, six, seven, eight, nine
+        case volumeUp, volumeDown
+        case powerOn, PowerOff
         //case sync, zero, info, rewind, fastForward, stop, pause, play, disc, menu
         
     }
@@ -99,6 +114,15 @@ struct ArcamCodes {
         case .nine:
             return [ 0x10, 0x09 ]
         
+            
+        case .volumeUp:
+            return [ 0x10, 0x10 ]
+        case .volumeDown:
+            return [ 0x10, 0x11]
+        case .powerOn:
+            return [ 0x10, 0x7B ]
+        case .PowerOff:
+            return [ 0x10, 0x7C ]
         }
     }
     

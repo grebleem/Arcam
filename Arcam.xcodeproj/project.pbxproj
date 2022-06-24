@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		284A4FA2279083A8002D4BA0 /* ConvertHexCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284A4FA1279083A8002D4BA0 /* ConvertHexCodeView.swift */; };
 		284BF0E1279081BA0080B6B9 /* MenuCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284BF0E0279081BA0080B6B9 /* MenuCommands.swift */; };
+		2863FD772799CC5200A0489A /* RoomEqView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863FD762799CC5200A0489A /* RoomEqView.swift */; };
 		28A8F432278F41060039A1AD /* WebSocketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A8F431278F41060039A1AD /* WebSocketController.swift */; };
 		28ED7E18278EE85A00700E9C /* ArcamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED7E17278EE85A00700E9C /* ArcamApp.swift */; };
 		28ED7E1A278EE85A00700E9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED7E19278EE85A00700E9C /* ContentView.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		284A4FA1279083A8002D4BA0 /* ConvertHexCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertHexCodeView.swift; sourceTree = "<group>"; };
 		284BF0E0279081BA0080B6B9 /* MenuCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCommands.swift; sourceTree = "<group>"; };
+		2863FD762799CC5200A0489A /* RoomEqView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEqView.swift; sourceTree = "<group>"; };
 		28A8F431278F41060039A1AD /* WebSocketController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketController.swift; sourceTree = "<group>"; };
 		28A8F433278F4DFB0039A1AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		28ED7E14278EE85A00700E9C /* Arcam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arcam.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +55,15 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		2863FD752799CC2A00A0489A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				28ED7E19278EE85A00700E9C /* ContentView.swift */,
+				2863FD762799CC5200A0489A /* RoomEqView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		28A8F430278F40F30039A1AD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -81,10 +92,10 @@
 			isa = PBXGroup;
 			children = (
 				28A8F433278F4DFB0039A1AD /* Info.plist */,
+				2863FD752799CC2A00A0489A /* Views */,
 				28A8F430278F40F30039A1AD /* Controller */,
 				28ED7E27278EE88200700E9C /* Models */,
 				28ED7E26278EE87A00700E9C /* App */,
-				28ED7E19278EE85A00700E9C /* ContentView.swift */,
 				284A4FA0279082E9002D4BA0 /* Menu */,
 				28ED7E2A278EFFDF00700E9C /* SettingView.swift */,
 				28ED7E1B278EE85A00700E9C /* Assets.xcassets */,
@@ -146,7 +157,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					28ED7E13278EE85A00700E9C = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -189,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28A8F432278F41060039A1AD /* WebSocketController.swift in Sources */,
+				2863FD772799CC5200A0489A /* RoomEqView.swift in Sources */,
 				28ED7E29278EE89600700E9C /* Arcam.swift in Sources */,
 				284A4FA2279083A8002D4BA0 /* ConvertHexCodeView.swift in Sources */,
 				284BF0E1279081BA0080B6B9 /* MenuCommands.swift in Sources */,
@@ -322,6 +334,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Arcam/Arcam.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -350,6 +363,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Arcam/Arcam.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
