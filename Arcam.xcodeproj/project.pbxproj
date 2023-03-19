@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2843602629C6FC6C0036517D /* Arcam_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843602529C6FC6C0036517D /* Arcam_iOSApp.swift */; };
+		2843602829C6FC6C0036517D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843602729C6FC6C0036517D /* ContentView.swift */; };
+		2843602A29C6FC6D0036517D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2843602929C6FC6D0036517D /* Assets.xcassets */; };
+		2843602D29C6FC6D0036517D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2843602C29C6FC6D0036517D /* Preview Assets.xcassets */; };
+		2843603429C6FC930036517D /* Arcam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ED7E28278EE89600700E9C /* Arcam.swift */; };
+		2843603629C6FCFE0036517D /* WebSocketController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A8F431278F41060039A1AD /* WebSocketController.swift */; };
 		284A4FA2279083A8002D4BA0 /* ConvertHexCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284A4FA1279083A8002D4BA0 /* ConvertHexCodeView.swift */; };
 		284BF0E1279081BA0080B6B9 /* MenuCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284BF0E0279081BA0080B6B9 /* MenuCommands.swift */; };
 		2863FD772799CC5200A0489A /* RoomEqView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2863FD762799CC5200A0489A /* RoomEqView.swift */; };
@@ -20,6 +26,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2843602329C6FC6C0036517D /* Arcam iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Arcam iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2843602529C6FC6C0036517D /* Arcam_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arcam_iOSApp.swift; sourceTree = "<group>"; };
+		2843602729C6FC6C0036517D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2843602929C6FC6D0036517D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2843602C29C6FC6D0036517D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2843603729C6FEC20036517D /* Arcam-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Arcam-iOS-Info.plist"; sourceTree = SOURCE_ROOT; };
 		284A4FA1279083A8002D4BA0 /* ConvertHexCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertHexCodeView.swift; sourceTree = "<group>"; };
 		284BF0E0279081BA0080B6B9 /* MenuCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCommands.swift; sourceTree = "<group>"; };
 		2863FD762799CC5200A0489A /* RoomEqView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomEqView.swift; sourceTree = "<group>"; };
@@ -36,6 +48,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2843602029C6FC6C0036517D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		28ED7E11278EE85A00700E9C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -46,6 +65,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2843602429C6FC6C0036517D /* Arcam iOS */ = {
+			isa = PBXGroup;
+			children = (
+				2843603729C6FEC20036517D /* Arcam-iOS-Info.plist */,
+				2843602529C6FC6C0036517D /* Arcam_iOSApp.swift */,
+				2843602729C6FC6C0036517D /* ContentView.swift */,
+				2843602929C6FC6D0036517D /* Assets.xcassets */,
+				2843602B29C6FC6D0036517D /* Preview Content */,
+			);
+			path = "Arcam iOS";
+			sourceTree = "<group>";
+		};
+		2843602B29C6FC6D0036517D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2843602C29C6FC6D0036517D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		284A4FA0279082E9002D4BA0 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				28ED7E16278EE85A00700E9C /* Arcam */,
+				2843602429C6FC6C0036517D /* Arcam iOS */,
 				28ED7E15278EE85A00700E9C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				28ED7E14278EE85A00700E9C /* Arcam.app */,
+				2843602329C6FC6C0036517D /* Arcam iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,6 +173,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2843602229C6FC6C0036517D /* Arcam iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2843603029C6FC6D0036517D /* Build configuration list for PBXNativeTarget "Arcam iOS" */;
+			buildPhases = (
+				2843601F29C6FC6C0036517D /* Sources */,
+				2843602029C6FC6C0036517D /* Frameworks */,
+				2843602129C6FC6C0036517D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Arcam iOS";
+			productName = "Arcam iOS";
+			productReference = 2843602329C6FC6C0036517D /* Arcam iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 		28ED7E13278EE85A00700E9C /* Arcam */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28ED7E23278EE85A00700E9C /* Build configuration list for PBXNativeTarget "Arcam" */;
@@ -156,9 +214,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1330;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					2843602229C6FC6C0036517D = {
+						CreatedOnToolsVersion = 14.2;
+					};
 					28ED7E13278EE85A00700E9C = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -178,11 +239,21 @@
 			projectRoot = "";
 			targets = (
 				28ED7E13278EE85A00700E9C /* Arcam */,
+				2843602229C6FC6C0036517D /* Arcam iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2843602129C6FC6C0036517D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2843602D29C6FC6D0036517D /* Preview Assets.xcassets in Resources */,
+				2843602A29C6FC6D0036517D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		28ED7E12278EE85A00700E9C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -195,6 +266,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2843601F29C6FC6C0036517D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2843603429C6FC930036517D /* Arcam.swift in Sources */,
+				2843602829C6FC6C0036517D /* ContentView.swift in Sources */,
+				2843602629C6FC6C0036517D /* Arcam_iOSApp.swift in Sources */,
+				2843603629C6FCFE0036517D /* WebSocketController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		28ED7E10278EE85A00700E9C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -213,6 +295,71 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		2843602E29C6FC6D0036517D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Arcam iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 57KVLPT6VS;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Arcam-iOS-Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.flourmountain.Arcam-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2843602F29C6FC6D0036517D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Arcam iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = 57KVLPT6VS;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Arcam-iOS-Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.flourmountain.Arcam-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		28ED7E21278EE85A00700E9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -247,6 +394,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -308,6 +456,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -338,6 +487,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Arcam/Preview Content\"";
 				DEVELOPMENT_TEAM = 57KVLPT6VS;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -367,6 +517,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Arcam/Preview Content\"";
 				DEVELOPMENT_TEAM = 57KVLPT6VS;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -389,6 +540,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2843603029C6FC6D0036517D /* Build configuration list for PBXNativeTarget "Arcam iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2843602E29C6FC6D0036517D /* Debug */,
+				2843602F29C6FC6D0036517D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		28ED7E0F278EE85A00700E9C /* Build configuration list for PBXProject "Arcam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

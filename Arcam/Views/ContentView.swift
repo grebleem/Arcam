@@ -91,7 +91,6 @@ struct ContentView: View {
                     .frame( height: 70)
                     .cornerRadius(25)
                     
-                    
             }
             .padding()
         }

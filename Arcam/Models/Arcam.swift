@@ -82,6 +82,7 @@ struct ArcamCodes {
     
     enum rc5 {
         case standby, eject, one, two, three, four, five, six, seven, eight, nine
+        case muteOn, muteOff
         case volumeUp, volumeDown
         case powerOn, PowerOff
         //case sync, zero, info, rewind, fastForward, stop, pause, play, disc, menu
@@ -115,10 +116,14 @@ struct ArcamCodes {
             return [ 0x10, 0x09 ]
         
             
+        case .muteOn:
+            return [ 0x10, 0x1A ]
+        case .muteOff:
+            return [ 0x10, 0x78 ]
         case .volumeUp:
             return [ 0x10, 0x10 ]
         case .volumeDown:
-            return [ 0x10, 0x11]
+            return [ 0x10, 0x11 ]
         case .powerOn:
             return [ 0x10, 0x7B ]
         case .PowerOff:

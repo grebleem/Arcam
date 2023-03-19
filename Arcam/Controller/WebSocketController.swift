@@ -13,15 +13,23 @@ import Network
 final class WebSocketController: ObservableObject {
     
     @Published var volume: Int?
+    @Published var buttonPool: Set<ButtonName> = []
+    
+    @Published var muted: Bool = false
+    
     
     private var zone: UInt8 = 0x01
     private var webSocketTask: URLSessionWebSocketTask?
     private var arcam = ArcamCodes()
     
+    
+    
     init(hostname: String, port: Int) {
         let host = NWEndpoint.Host(hostname)
         let port = NWEndpoint.Port("\(port)")!
         self.connection = NWConnection(host: host, port: port, using: .tcp)
+        
+        connect()
     }
     
     let connection: NWConnection
@@ -90,14 +98,14 @@ final class WebSocketController: ObservableObject {
         
         guard data[0] == 0x21 else { return }
         guard data.last == 0x0D else { return }
-        let zoneNumber: UInt8 = data[1]
+        // let zoneNumber: UInt8 = data[1]
         //
-//        switch zoneNumber {
-//        case 0x01: print("ZN: 1")
-//        case 0x02: print("ZN: 2")
-//        default:
-//            print("no Zone")
-//        }
+        //        switch zoneNumber {
+        //        case 0x01: print("ZN: 1")
+        //        case 0x02: print("ZN: 2")
+        //        default:
+        //            print("no Zone")
+        //        }
         guard let commandCode = ArcamCodes.CommandEnum(rawValue: data[2]) else {
             print("Command: \(data[2].hexEncodedString()) [\(data[2])] not implemented.")
             return
@@ -129,7 +137,7 @@ final class WebSocketController: ObservableObject {
         
         
         let dataParameters = data[5...dataLenght + 4]
-            processCommandResponse(command: commandCode, data: dataParameters)
+        processCommandResponse(command: commandCode, data: dataParameters)
         //print("Dl: \(dataLenght) bytes")
         
         // NSLog("data: %@", dataParameters as NSData)
@@ -145,7 +153,7 @@ final class WebSocketController: ObservableObject {
     func processCommandResponse(command: ArcamCodes.CommandEnum, data: Data) {
         
         guard let dataFirst = data.first else { return }
-//            print(data)
+        //            print(data)
         
         switch command {
             
@@ -180,289 +188,304 @@ final class WebSocketController: ObservableObject {
         case .selectAnalogDigital:
             print(String(describing: command))
         case .setRequestVolume:
-            print("\(data) dB")
+            //print("\(data) dB")
             self.volume = Int(dataFirst)
         case .requestMuteStatus:
-            print(String(describing: command))
-        case .directModeStatus:
-            print(String(describing: command))
-        case .requestDecodeModeStatus2ch:
-            switch data.first {
-            case 0x01: print("Stereo")
-            case 0x04: print("Dolby Surround ")
-            case 0x07: print("Neo:6 Cinema")
-            case 0x08: print("Neo:6 Music")
-            case 0x09: print("5/7 Ch Stereo")
-            case 0x0A: print("DTS Neural:X")
-            case 0x0B: print("Reserved")
-            case 0x0C: print("DTS Virtual:X")
-            case 0x0D: print("Dolby Virtual Height ")
-            case 0x0E: print("Auro Native")
-            case 0x0F: print("Auro-Matic 3D")
-            case 0x10: print("Auro-2D")
-            default:
-                return
+            /// Mute Status
+            ///
+            if data.first == 0x00 {
+                print("Muted")
+                self.muted = true
+                self.buttonPool.insert(.mute)
             }
-        case .requestDecodeModeStatasMCH:
-            print(String(describing: command))
-        case .requestRDSinformation:
-            print(String(describing: command))
-        case .requestVideoOutputResolution:
-            print(String(describing: command))
-        case .requestMenuStatus:
-            print(String(describing: command))
-        case .requestTunerPreset:
-            print(String(describing: command))
-        case .tune:
-            print(String(describing: command))
-        case .requestDABstation:
-            print(String(describing: command))
-        case .progTypeCategory:
-            print(String(describing: command))
-        case .dlsPDTinfo:
-            print(String(describing: command))
-        case .imaxEnhanched:
-            print(String(describing: command))
-        case .requestIncomingVideoParameters:
-            print(String(describing: command))
-        case .heartbeat:
-            print(String(describing: command))
-        case .trebleEqualisation:
-            print(String(describing: command))
-        case .bassEqualisation:
-            print(String(describing: command))
-        case .roomEqualisation:
-            print(String(describing: command))
-        case .dolbyAudio:
-            print(String(describing: command))
-        case .balance:
-            print(String(describing: command))
-        case .subwooferTrim:
-            print(String(describing: command))
-        case .lipsyncDelay:
-            print(String(describing: command))
-        case .compression:
-            print(String(describing: command))
-        case .requestIncomingAudioFormat:
-            switch dataFirst {
-            case 0x00: print("PCM")
-            case 0x01: print("Analogue Direct")
-            case 0x02: print("Dolby Digital")
-            case 0x03: print("Dolby Digital EX")
-            case 0x04: print("Dolby Digital Surround ")
-            case 0x05: print("Dolby Digital Plus")
-            case 0x06: print("Dolby Digital True HD")
-            case 0x07: print("DTS")
-            case 0x08: print("DTS 96/24")
-            case 0x09: print("DTS ES Matrix")
-            case 0x0A: print("DTS ES Discrete")
-            case 0x0B: print("DTS ES Matrix 96/24 ")
-            case 0x0C: print("DTS ES Discrete 96/24 ")
-            case 0x0D: print("DTS HD Master Audio ")
-            case 0x0E: print("DTS HD High Res Audio ")
-            case 0x0F: print("DTS Low Bit Rate")
-            case 0x10: print("DTS Core")
-            case 0x13: print("PCM Zero")
-            case 0x14: print("Unsupported")
-            case 0x15: print("Undetected")
-            case 0x16: print("Dolby Atmos")
-            case 0x17: print("DTS:X")
-            case 0x18: print("IMAX ENHANCED")
-            case 0x19: print("Auro 3D")
-
-            default:
-                return
+            if data.first == 0x01 {
+                print("Not Muted")
+                self.muted = false
+                self.buttonPool.remove(.mute)
             }
-        case .requestIncomingAudioSampleRate:
-            print(getSampleRate(data: dataFirst))
-        case .requestSubStereoTrim:
-            print(String(describing: command))
-        case .roomEQnames:
-            guard let string = String(data: data, encoding: .utf8) else { return }
-            print(string)
             
-            print(data)
-        case .nowPlayingInformation:
-            
-            guard let string = String(data: data, encoding: .utf8) else { return }
-            print(string)
-            
+        print(String(describing: command))
+    case .directModeStatus:
+        print(String(describing: command))
+    case .requestDecodeModeStatus2ch:
+        switch data.first {
+        case 0x01: print("Stereo")
+        case 0x04: print("Dolby Surround ")
+        case 0x07: print("Neo:6 Cinema")
+        case 0x08: print("Neo:6 Music")
+        case 0x09: print("5/7 Ch Stereo")
+        case 0x0A: print("DTS Neural:X")
+        case 0x0B: print("Reserved")
+        case 0x0C: print("DTS Virtual:X")
+        case 0x0D: print("Dolby Virtual Height ")
+        case 0x0E: print("Auro Native")
+        case 0x0F: print("Auro-Matic 3D")
+        case 0x10: print("Auro-2D")
+        default:
+            return
         }
-    }
-    
-    
-    func requestStatus(command: ArcamCodes.CommandEnum, data: [UInt8]) {
-        print(UInt8(16))
-        let sendCode:[UInt8] = [ 0x21, zone, command.rawValue ] + [ UInt8(data.count) ] + data +  [ 0x0D ]
-        sendDataToWebsocket(code: sendCode)
-    }
-    
-    func sendCommand(_ command: ArcamCodes.CommandEnum) {
-        switch command {
+    case .requestDecodeModeStatasMCH:
+        print(String(describing: command))
+    case .requestRDSinformation:
+        print(String(describing: command))
+    case .requestVideoOutputResolution:
+        print(String(describing: command))
+    case .requestMenuStatus:
+        print(String(describing: command))
+    case .requestTunerPreset:
+        print(String(describing: command))
+    case .tune:
+        print(String(describing: command))
+    case .requestDABstation:
+        print(String(describing: command))
+    case .progTypeCategory:
+        print(String(describing: command))
+    case .dlsPDTinfo:
+        print(String(describing: command))
+    case .imaxEnhanched:
+        print(String(describing: command))
+    case .requestIncomingVideoParameters:
+        print(String(describing: command))
+    case .heartbeat:
+        print(String(describing: command))
+    case .trebleEqualisation:
+        print(String(describing: command))
+    case .bassEqualisation:
+        print(String(describing: command))
+    case .roomEqualisation:
+        print(String(describing: command))
+    case .dolbyAudio:
+        print(String(describing: command))
+    case .balance:
+        print(String(describing: command))
+    case .subwooferTrim:
+        print(String(describing: command))
+    case .lipsyncDelay:
+        print(String(describing: command))
+    case .compression:
+        print(String(describing: command))
+    case .requestIncomingAudioFormat:
+        switch dataFirst {
+        case 0x00: print("PCM")
+        case 0x01: print("Analogue Direct")
+        case 0x02: print("Dolby Digital")
+        case 0x03: print("Dolby Digital EX")
+        case 0x04: print("Dolby Digital Surround ")
+        case 0x05: print("Dolby Digital Plus")
+        case 0x06: print("Dolby Digital True HD")
+        case 0x07: print("DTS")
+        case 0x08: print("DTS 96/24")
+        case 0x09: print("DTS ES Matrix")
+        case 0x0A: print("DTS ES Discrete")
+        case 0x0B: print("DTS ES Matrix 96/24 ")
+        case 0x0C: print("DTS ES Discrete 96/24 ")
+        case 0x0D: print("DTS HD Master Audio ")
+        case 0x0E: print("DTS HD High Res Audio ")
+        case 0x0F: print("DTS Low Bit Rate")
+        case 0x10: print("DTS Core")
+        case 0x13: print("PCM Zero")
+        case 0x14: print("Unsupported")
+        case 0x15: print("Undetected")
+        case 0x16: print("Dolby Atmos")
+        case 0x17: print("DTS:X")
+        case 0x18: print("IMAX ENHANCED")
+        case 0x19: print("Auro 3D")
             
-        case .power:
-            sendDataToWebsocket(code: arcam.power)
-        case .displayBrightness:
-            print("to Do..")
-        case .headphones:
-            print("to Do..")
-        case .fmGenre:
-            print("to Do..")
-        case .softwareVersion:
-            requestStatus(command: ArcamCodes.CommandEnum.softwareVersion, data: [0xF1])
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                // your code here
-                self.requestStatus(command: ArcamCodes.CommandEnum.softwareVersion, data: [0xF2])
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                // your code here
-                self.requestStatus(command: ArcamCodes.CommandEnum.softwareVersion, data: [0xF3])
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                // your code here
-                self.requestStatus(command: ArcamCodes.CommandEnum.softwareVersion, data: [0xF4])
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                // your code here
-                self.requestStatus(command: ArcamCodes.CommandEnum.softwareVersion, data: [0xF5])
-            }
-        case .restoreFactoryDefaultSettings:
-            print("to Do..")
-        case .saveRestoreCopySettings:
-            print("to Do..")
-        case .rc5Command:
-            print("to Do..")
-        case .displayInformationType:
-            requestStatus(command: ArcamCodes.CommandEnum.displayInformationType, data: [0xF0])
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                // your code here
-                self.requestStatus(command: ArcamCodes.CommandEnum.displayInformationType, data: [0xF2])
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                // your code here
-                self.requestStatus(command: ArcamCodes.CommandEnum.displayInformationType, data: [0x03])
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                // your code here
-                self.requestStatus(command: ArcamCodes.CommandEnum.displayInformationType, data: [0x04])
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                // your code here
-                self.requestStatus(command: ArcamCodes.CommandEnum.displayInformationType, data: [0x05])
-            }
-            
-        case .requestCurrentSource:
-            print("to Do..")
-        case .headphoneOverride:
-            print("to Do..")
-        case .selectAnalogDigital:
-            print("to Do..")
-        case .setRequestVolume:
-            print("to Do..")
-        case .requestMuteStatus:
-            print("to Do..")
-        case .directModeStatus:
-            print("to Do..")
-        case .requestDecodeModeStatus2ch:
-            print("to Do..")
-        case .requestDecodeModeStatasMCH:
-            print("to Do..")
-        case .trebleEqualisation:
-            print("To Do")
-        case .bassEqualisation:
-            print("To Do")
-        case .roomEqualisation:
-            requestStatus(command: ArcamCodes.CommandEnum.roomEqualisation, data: [0xF0])
-        case .dolbyAudio:
-            print("To Do")
-        case .balance:
-            print("To Do")
-        case .subwooferTrim:
-            print("To Do")
-        case .lipsyncDelay:
-            print("To Do")
-        case .compression:
-            print("To Do")
-        case .requestIncomingAudioFormat:
-            print("To Do")
-        case .requestIncomingAudioSampleRate:
-            print("To Do")
-        case .requestSubStereoTrim:
-            print("To Do")
-        case .requestRDSinformation:
-            print("to Do..")
-        case .requestVideoOutputResolution:
-            print("to Do..")
-        case .requestMenuStatus:
-            print("to Do..")
-        case .requestTunerPreset:
-            print("to Do..")
-        case .tune:
-            print("to Do..")
-        case .requestDABstation:
-            print("to Do..")
-        case .progTypeCategory:
-            print("to Do..")
-        case .dlsPDTinfo:
-            print("to Do..")
-        case .imaxEnhanched:
-            print("to Do..")
-        case .requestIncomingVideoParameters:
-            print("to Do..")
-        case .heartbeat:
-            print("to Do..")
-
-        case .roomEQnames:
-            requestStatus(command: ArcamCodes.CommandEnum.roomEQnames, data: [0xF0])
-            
-        case .nowPlayingInformation:
-            requestStatus(command: ArcamCodes.CommandEnum.nowPlayingInformation, data: [0xF0])
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                // your code here
-                self.requestStatus(command: ArcamCodes.CommandEnum.nowPlayingInformation, data: [0xF1])
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                // your code here
-                self.requestStatus(command: ArcamCodes.CommandEnum.nowPlayingInformation, data: [0xF2])
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                // your code here
-                self.requestStatus(command: ArcamCodes.CommandEnum.nowPlayingInformation, data: [0xF3])
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                // your code here
-                self.requestStatus(command: ArcamCodes.CommandEnum.nowPlayingInformation, data: [0xF4])
-            }
+        default:
+            return
         }
-    }
-    
-    
-    func randomResponse() {
-        if let random = arcam.testResponse.randomElement() {
-            sendDataToWebsocket(code: random)
-        }
+    case .requestIncomingAudioSampleRate:
+        print(getSampleRate(data: dataFirst))
+    case .requestSubStereoTrim:
+        print(String(describing: command))
+    case .roomEQnames:
+        guard let string = String(data: data, encoding: .utf8) else { return }
+        print(string)
+        
+        print(data)
+    case .nowPlayingInformation:
+        
+        guard let string = String(data: data, encoding: .utf8) else { return }
+        print(string)
         
     }
-    
-    func sendDataToWebsocket(code: [UInt8]) {
-        let data = Data(code)
-        self.connection.send(content: data, completion: NWConnection.SendCompletion.contentProcessed { error in
-            if let error = error {
-                NSLog("did send, error: %@", "\(error)")
-                self.stop()
-            } else {
-                NSLog("Send, data: %@", data as NSData)
-            }
-        })
+}
+
+
+func requestStatus(command: ArcamCodes.CommandEnum, data: [UInt8]) {
+    //print(UInt8(16))
+    let sendCode:[UInt8] = [ 0x21, zone, command.rawValue ] + [ UInt8(data.count) ] + data +  [ 0x0D ]
+    sendDataToWebsocket(code: sendCode)
+}
+
+func sendCommand(_ command: ArcamCodes.CommandEnum) {
+    switch command {
+        
+    case .power:
+        sendDataToWebsocket(code: arcam.power)
+    case .displayBrightness:
+        print("to Do..")
+    case .headphones:
+        print("to Do..")
+    case .fmGenre:
+        print("to Do..")
+    case .softwareVersion:
+        requestStatus(command: ArcamCodes.CommandEnum.softwareVersion, data: [0xF1])
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            // your code here
+            self.requestStatus(command: ArcamCodes.CommandEnum.softwareVersion, data: [0xF2])
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            // your code here
+            self.requestStatus(command: ArcamCodes.CommandEnum.softwareVersion, data: [0xF3])
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            // your code here
+            self.requestStatus(command: ArcamCodes.CommandEnum.softwareVersion, data: [0xF4])
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            // your code here
+            self.requestStatus(command: ArcamCodes.CommandEnum.softwareVersion, data: [0xF5])
+        }
+    case .restoreFactoryDefaultSettings:
+        print("to Do..")
+    case .saveRestoreCopySettings:
+        print("to Do..")
+    case .rc5Command:
+        print("to Do..")
+    case .displayInformationType:
+        requestStatus(command: ArcamCodes.CommandEnum.displayInformationType, data: [0xF0])
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            // your code here
+            self.requestStatus(command: ArcamCodes.CommandEnum.displayInformationType, data: [0xF2])
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            // your code here
+            self.requestStatus(command: ArcamCodes.CommandEnum.displayInformationType, data: [0x03])
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            // your code here
+            self.requestStatus(command: ArcamCodes.CommandEnum.displayInformationType, data: [0x04])
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            // your code here
+            self.requestStatus(command: ArcamCodes.CommandEnum.displayInformationType, data: [0x05])
+        }
+        
+    case .requestCurrentSource:
+        print("to Do..")
+    case .headphoneOverride:
+        print("to Do..")
+    case .selectAnalogDigital:
+        print("to Do..")
+    case .setRequestVolume:
+        print("to Do..")
+    case .requestMuteStatus:
+        requestStatus(command: ArcamCodes.CommandEnum.requestMuteStatus, data: [0xF0])
+    case .directModeStatus:
+        print("to Do..")
+    case .requestDecodeModeStatus2ch:
+        print("to Do..")
+    case .requestDecodeModeStatasMCH:
+        print("to Do..")
+    case .trebleEqualisation:
+        print("To Do")
+    case .bassEqualisation:
+        print("To Do")
+    case .roomEqualisation:
+        requestStatus(command: ArcamCodes.CommandEnum.roomEqualisation, data: [0x0E])
+    case .dolbyAudio:
+        print("To Do")
+    case .balance:
+        print("To Do")
+    case .subwooferTrim:
+        print("To Do")
+    case .lipsyncDelay:
+        print("To Do")
+    case .compression:
+        print("To Do")
+    case .requestIncomingAudioFormat:
+        print("To Do")
+    case .requestIncomingAudioSampleRate:
+        print("To Do")
+    case .requestSubStereoTrim:
+        print("To Do")
+    case .requestRDSinformation:
+        print("to Do..")
+    case .requestVideoOutputResolution:
+        print("to Do..")
+    case .requestMenuStatus:
+        print("to Do..")
+    case .requestTunerPreset:
+        print("to Do..")
+    case .tune:
+        print("to Do..")
+    case .requestDABstation:
+        print("to Do..")
+    case .progTypeCategory:
+        print("to Do..")
+    case .dlsPDTinfo:
+        print("to Do..")
+    case .imaxEnhanched:
+        print("to Do..")
+    case .requestIncomingVideoParameters:
+        print("to Do..")
+    case .heartbeat:
+        print("to Do..")
+        
+        
+    case .roomEQnames:
+        requestStatus(command: ArcamCodes.CommandEnum.roomEQnames, data: [0xF0])
+        
+    case .nowPlayingInformation:
+        requestStatus(command: ArcamCodes.CommandEnum.nowPlayingInformation, data: [0xF0])
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            // your code here
+            self.requestStatus(command: ArcamCodes.CommandEnum.nowPlayingInformation, data: [0xF1])
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            // your code here
+            self.requestStatus(command: ArcamCodes.CommandEnum.nowPlayingInformation, data: [0xF2])
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            // your code here
+            self.requestStatus(command: ArcamCodes.CommandEnum.nowPlayingInformation, data: [0xF3])
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            // your code here
+            self.requestStatus(command: ArcamCodes.CommandEnum.nowPlayingInformation, data: [0xF4])
+        }
+    }
+}
+
+
+func randomResponse() {
+    if let random = arcam.testResponse.randomElement() {
+        sendDataToWebsocket(code: random)
     }
     
+}
+
+func sendDataToWebsocket(code: [UInt8]) {
+    let data = Data(code)
+
+    self.connection.send(content: data, completion: NWConnection.SendCompletion.contentProcessed { error in
+        if let error = error {
+            NSLog("did send, error: %@", "\(error)")
+            self.stop()
+        } else {
+            NSLog("Send, data: %@", data as NSData)
+        }
+    })
+}
+
 }
 
 extension Data {
     func hexEncodedString() -> String {
         return map { String(format: "%02hhx", $0) }.joined()
     }
-
+    
 }
 
 extension UInt8 {
@@ -488,7 +511,7 @@ func getSampleRate(data: UInt8) -> String {
     case 0x06: return "192 kHz"
     case 0x07: return "Unkown"
     case 0x08: return "Undetected"
-
+        
     default:
         return ""
     }
@@ -498,7 +521,7 @@ func decodeVersion(data: Data) -> String? {
     
     guard let majorVersion = String(data: data, encoding: .utf8) else { return nil }
     guard let minorVersion = String(data: data, encoding: .utf8) else { return nil }
-            
+    
     switch data.first {
     case 0xF0: do {
         let returnString = String(format:"RS232: %@", data[1])

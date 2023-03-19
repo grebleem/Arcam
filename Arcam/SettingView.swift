@@ -20,6 +20,7 @@ struct SettingView: View {
             TextField("Enter Control IP...", text: $ipAddress)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
         }
+        
         .frame(width: 300)
         .navigationTitle("Arcam Settings")
         .padding(80)
